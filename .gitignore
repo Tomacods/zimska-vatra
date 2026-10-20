@@ -1,6 +1,7 @@
 node_modules/
 dist/
 .astro/
+.vercel/
 .tmp/
 # Instrucciones y archivos locales de asistentes
 .codex/
