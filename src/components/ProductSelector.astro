@@ -1,0 +1,83 @@
+---
+import { products } from '../data/site';
+import Photo from './Photo.astro';
+import Icon from './Icon.astro';
+---
+<section class="products section-shell" id="sabores" aria-labelledby="products-title">
+  <div class="section-heading">
+    <h2 id="products-title">Encontrá<br />tu próximo <span>ritual.</span></h2>
+    <p>Del primer sorbo a la última charla.<br />Una misma esencia, distintas formas de compartirla.</p>
+  </div>
+  <div class="product-selector" data-tabs>
+    <div class="product-options" data-tablist aria-label="Elegí una bebida">
+      {products.map((product) => <a href={`#variedad-${product.id}`} data-tab={product.id} style={`--product-color: ${product.color}`}><span class="product-dot" aria-hidden="true"></span>{product.shortName}<Icon name="diagonal" /></a>)}
+    </div>
+    <div class="product-panels">
+      {products.map((product) => (
+        <article class={`product-panel tone-${product.tone}`} id={`variedad-${product.id}`} data-panel={product.id}>
+          <figure class:list={['product-photo', { 'is-label': product.id === 'cafe' }]}>
+            <Photo name={product.image} alt={product.imageAlt} sizes="(max-width: 700px) 100vw, 44vw" />
+            {product.id === 'cafe' && <figcaption>La etiqueta original de nuestra variedad con café.</figcaption>}
+          </figure>
+          <div class="product-details">
+            <h3>{product.title.split('\n').map((line) => <span>{line}</span>)}</h3>
+            <p class="product-category">{product.category}</p>
+            <p class="product-description">{product.description}</p>
+            <ul class="tasting-notes" aria-label="Características">{product.notes.map(note => <li>{note}</li>)}</ul>
+            <div class="serving-note"><p>Tu momento ideal</p><p>{product.serving}</p></div>
+            <a class="button button-product" href="#pedido" data-order-product={product.id}>Quiero probar este <Icon name="arrow" /></a>
+            <p class="product-size">{product.sizes}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+<script>
+  document.querySelectorAll<HTMLElement>('[data-tabs]').forEach(root => {
+    const links = Array.from(root.querySelectorAll<HTMLAnchorElement>('[data-tab]'));
+    const panels = Array.from(root.querySelectorAll<HTMLElement>('[data-panel]'));
+    const list = root.querySelector<HTMLElement>('[data-tablist]');
+    if (!list || !links.length || panels.length !== links.length) return;
+    list.setAttribute('role', 'tablist');
+    links.forEach((link, index) => {
+      link.setAttribute('role', 'tab');
+      link.id = `tab-${link.dataset.tab}`;
+      link.setAttribute('aria-controls', panels[index].id);
+      panels[index].setAttribute('role', 'tabpanel');
+      panels[index].setAttribute('aria-labelledby', link.id);
+      panels[index].tabIndex = 0;
+    });
+    const activate = (index: number, focus = false) => {
+      links.forEach((link, i) => {
+        link.setAttribute('aria-selected', String(index === i));
+        link.tabIndex = index === i ? 0 : -1;
+        panels[i].hidden = index !== i;
+      });
+      root.dispatchEvent(new CustomEvent('zimska:product-selected', {
+        bubbles: true,
+        detail: { id: links[index].dataset.tab },
+      }));
+      if (focus) links[index].focus();
+    };
+    links.forEach((link, index) => {
+      link.addEventListener('click', event => { event.preventDefault(); activate(index); });
+      link.addEventListener('keydown', event => {
+        let next = index;
+        if (event.key === 'ArrowRight') next = (index + 1) % links.length;
+        else if (event.key === 'ArrowLeft') next = (index - 1 + links.length) % links.length;
+        else if (event.key === 'Home') next = 0;
+        else if (event.key === 'End') next = links.length - 1;
+        else return;
+        event.preventDefault(); activate(next, true);
+      });
+    });
+    const initial = links.findIndex(link => link.hash === window.location.hash);
+    activate(initial >= 0 ? initial : 0);
+    root.dataset.enhanced = 'true';
+    window.addEventListener('hashchange', () => {
+      const selected = links.findIndex(link => link.hash === window.location.hash);
+      if (selected >= 0) activate(selected);
+    });
+  });
+</script>

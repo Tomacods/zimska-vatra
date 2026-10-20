@@ -1,0 +1,25 @@
+---
+import assets from '../data/assets.json';
+interface Props {
+  name: string;
+  alt: string;
+  class?: string;
+  sizes?: string;
+  priority?: boolean;
+}
+const { name, alt, class: className, sizes = '(max-width: 700px) 100vw, 50vw', priority = false } = Astro.props;
+const asset = assets[name as keyof typeof assets];
+const max = Math.max(...asset.widths);
+---
+<img
+  src={`/images/${name}-${Math.min(max, 1200)}.webp`}
+  srcset={asset.widths.filter((w) => w <= asset.width).map((w) => `/images/${name}-${w}.webp ${w}w`).join(', ')}
+  sizes={sizes}
+  alt={alt}
+  width={asset.width}
+  height={asset.height}
+  class={className}
+  loading={priority ? 'eager' : 'lazy'}
+  fetchpriority={priority ? 'high' : 'auto'}
+  decoding="async"
+/>

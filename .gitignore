@@ -1,0 +1,30 @@
+node_modules/
+dist/
+.astro/
+.tmp/
+# Instrucciones y archivos locales de asistentes
+.codex/
+.agents/
+.impeccable/
+.claude/
+.cursor/
+.gemini/
+skills/
+AGENTS.md
+AGENTS.override.md
+SKILL.md
+CODEX.md
+CLAUDE.md
+GEMINI.md
+.cursorrules
+/.windsurfrules
+/PRODUCT.md
+/DESIGN.md
+# Metadatos locales del flujo de diseño
+/public/images/*.webp.json
+*.log
+.env
+.env.*
+!.env.example
+Thumbs.db
+.DS_Store

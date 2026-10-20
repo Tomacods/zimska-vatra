@@ -1,0 +1,52 @@
+---
+import Photo from './Photo.astro';
+import Icon from './Icon.astro';
+const rituals = [
+  { id: 'caliente', name: 'Caliente', image: 'ritual-caliente', alt: 'Taza de vino kuhano con canela y anís iluminada por el sol', title: 'Un poco de calor.\nTodo el aroma.', steps: [{ title: 'Calentá despacio.', text: 'Llevá el kuhano a fuego suave durante 2 o 3 minutos. El secreto: que no llegue a hervir.' }, { title: 'Dale tu toque.', text: 'Servilo en una taza o vaso resistente al calor, con una rodaja de naranja.' }, { title: 'Hacé lugar en la mesa.', text: 'El último ingrediente es el momento. Disfrutá y compartí.' }] },
+  { id: 'frio', name: 'Con hielo', image: 'ritual-frio', alt: 'Trago frío de Zimska Vatra con naranja y menta junto a la botella', title: 'El encuentro\nno tiene estación.', steps: [{ title: 'Elegí tu vaso.', text: 'Agregá hielo y serví nuestro vino kuhano tinto.' }, { title: 'Sumá frescura.', text: 'Acompañalo con naranja y unas hojas de menta, como en nuestros tragos.' }, { title: 'Brindá a tu manera.', text: 'Un aperitivo, una sobremesa o esa charla que todavía tiene para rato.' }] },
+];
+---
+<section id="ritual" class="ritual" aria-labelledby="ritual-title">
+  <div class="ritual-inner section-shell">
+    <div class="ritual-introduction"><h2 id="ritual-title">El ritual<br />lo ponés <span>vos.</span></h2><p>El kuhano vino significa “vino caliente”.<br />La forma de disfrutarlo también puede ser tuya.</p></div>
+    <div class="ritual-switch" aria-label="Formas de disfrutar el kuhano"><a href="#ritual-caliente" data-ritual-tab="caliente">Caliente</a><a href="#ritual-frio" data-ritual-tab="frio">Con hielo</a></div>
+    <div class="ritual-scenes">
+      {rituals.map((ritual) => <article id={`ritual-${ritual.id}`} class="ritual-scene" data-ritual-panel={ritual.id}>
+        <figure><Photo name={ritual.image} alt={ritual.alt} /><figcaption>{ritual.id === 'caliente' ? 'El aroma de las especias. El calor del encuentro.' : 'Nuestro kuhano, en una versión refrescante.'}</figcaption></figure>
+        <div class="ritual-instructions"><h3>{ritual.title.split('\n').map(line => <span>{line}</span>)}</h3><ol>{ritual.steps.map(step => <li><h4>{step.title}</h4><p>{step.text}</p></li>)}</ol><a class="text-link" href="#pedido">Ya quiero el mío <Icon name="arrow" /></a></div>
+      </article>)}
+    </div>
+  </div>
+</section>
+<script>
+  const tabs = Array.from(document.querySelectorAll<HTMLAnchorElement>('[data-ritual-tab]'));
+  const panels = Array.from(document.querySelectorAll<HTMLElement>('[data-ritual-panel]'));
+  const list = document.querySelector('.ritual-switch');
+  if (list && tabs.length === panels.length) {
+    list.setAttribute('role', 'tablist');
+    const activate = (index: number, focus = false) => {
+      tabs.forEach((tab, i) => {
+        tab.setAttribute('aria-selected', String(i === index)); tab.tabIndex = i === index ? 0 : -1;
+        panels[i].hidden = i !== index;
+      });
+      if (focus) tabs[index].focus();
+    };
+    tabs.forEach((tab, i) => {
+      tab.id = `ritual-tab-${i}`; tab.setAttribute('role', 'tab'); tab.setAttribute('aria-controls', panels[i].id);
+      panels[i].setAttribute('role', 'tabpanel'); panels[i].setAttribute('aria-labelledby', tab.id); panels[i].tabIndex = 0;
+      tab.addEventListener('click', event => { event.preventDefault(); activate(i); });
+      tab.addEventListener('keydown', event => {
+        const key = event.key;
+        if (['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(key)) {
+          event.preventDefault(); activate(key === 'Home' ? 0 : key === 'End' ? tabs.length - 1 : (i + 1) % tabs.length, true);
+        }
+      });
+    });
+    const initial = tabs.findIndex(tab => tab.hash === window.location.hash);
+    activate(initial >= 0 ? initial : 0);
+    window.addEventListener('hashchange', () => {
+      const index = tabs.findIndex(tab => tab.hash === window.location.hash);
+      if (index >= 0) activate(index);
+    });
+  }
+</script>

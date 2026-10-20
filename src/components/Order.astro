@@ -1,0 +1,60 @@
+---
+import { products, site } from '../data/site';
+import Icon from './Icon.astro';
+const firstMessage = `¡Hola, Zimska Vatra! Quiero consultar por 1 botella de ${products[0].name}. ¿Me cuentan las presentaciones, precios y formas de entrega?`;
+---
+<section id="pedido" class="order-section section-shell" aria-labelledby="order-title">
+  <div class="order-intro"><h2 id="order-title">El próximo<br />brindis <span>empieza acá.</span></h2><p>Contanos qué te gustaría probar.<br />Coordinamos tu pedido de forma personal.</p><a class="instagram-handle" href={site.instagram} target="_blank" rel="noopener noreferrer"><Icon name="instagram" /> @zimska.vatra.ok <Icon name="diagonal" /></a></div>
+  <div class="order-form" data-whatsapp-number={site.whatsappNumber}>
+    <div class="order-fields"><div><label for="order-product">¿Qué vamos a compartir?</label><select id="order-product" name="bebida">{products.map(product => <option value={product.id} data-name={product.name}>{product.name}</option>)}</select></div><div><label for="order-quantity">Botellas</label><select id="order-quantity" name="cantidad">{[1, 2, 3, 4, 6, 12].map(quantity => <option value={quantity}>{quantity}</option>)}</select></div></div>
+    <label for="order-message" class="message-label">Tu consulta, lista para enviar</label>
+    <textarea id="order-message" rows="4" readonly>{firstMessage}</textarea>
+    <button type="button" class="copy-message" id="copy-message"><Icon name="copy" /><span>Copiar consulta</span></button>
+    <p class="copy-status" id="copy-status" role="status" aria-live="polite"></p>
+    <a class="button button-red order-instagram" href={site.instagramDM} target="_blank" rel="noopener noreferrer"><Icon name="instagram" /> Consultar por Instagram <Icon name="diagonal" /></a>
+    {site.whatsappNumber && <a class="button button-outline" id="order-whatsapp" href={`https://wa.me/${site.whatsappNumber}?text=${encodeURIComponent(firstMessage)}`} target="_blank" rel="noopener noreferrer"><Icon name="whatsapp" /> Consultar por WhatsApp <Icon name="diagonal" /></a>}
+    <p class="order-explanation">Copiá tu consulta y pegala en el chat. Te contamos precios, disponibilidad y opciones de entrega.</p>
+  </div>
+</section>
+<script>
+  const product = document.querySelector<HTMLSelectElement>('#order-product');
+  const quantity = document.querySelector<HTMLSelectElement>('#order-quantity');
+  const message = document.querySelector<HTMLTextAreaElement>('#order-message');
+  const copy = document.querySelector<HTMLButtonElement>('#copy-message');
+  const status = document.querySelector<HTMLElement>('#copy-status');
+  const whatsapp = document.querySelector<HTMLAnchorElement>('#order-whatsapp');
+  const number = document.querySelector<HTMLElement>('.order-form')?.dataset.whatsappNumber;
+  if (product && quantity && message && copy && status) {
+    const update = () => {
+      const name = product.selectedOptions[0].dataset.name;
+      const count = Number(quantity.value);
+      message.value = `¡Hola, Zimska Vatra! Quiero consultar por ${count} ${count === 1 ? 'botella' : 'botellas'} de ${name}. ¿Me cuentan las presentaciones, precios y formas de entrega?`;
+      status.textContent = '';
+      copy.querySelector('span')!.textContent = 'Copiar consulta';
+      if (whatsapp && number) whatsapp.href = `https://wa.me/${number}?text=${encodeURIComponent(message.value)}`;
+    };
+    product.addEventListener('change', update); quantity.addEventListener('change', update);
+    const chooseProduct = (id: string | undefined) => {
+      if (!id || !Array.from(product.options).some(option => option.value === id)) return;
+      product.value = id;
+      update();
+    };
+    document.addEventListener('zimska:product-selected', event => {
+      if (event instanceof CustomEvent && typeof event.detail?.id === 'string') chooseProduct(event.detail.id);
+    });
+    document.querySelectorAll<HTMLAnchorElement>('[data-order-product]').forEach(link => link.addEventListener('click', () => {
+      chooseProduct(link.dataset.orderProduct);
+    }));
+    chooseProduct(document.querySelector<HTMLAnchorElement>('[data-tabs] [aria-selected="true"]')?.dataset.tab);
+    copy.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(message.value);
+        copy.querySelector('span')!.textContent = 'Consulta copiada';
+        status.textContent = 'Lista. Abrí Instagram y pegala en el chat.';
+      } catch {
+        message.focus(); message.select();
+        status.textContent = 'Seleccionamos tu consulta. Copiala con el menú de tu dispositivo o con Ctrl+C.';
+      }
+    });
+  }
+</script>
