@@ -1,0 +1,62 @@
+---
+import '@fontsource/barlow/latin-400.css';
+import '@fontsource/barlow/latin-500.css';
+import '@fontsource/barlow/latin-600.css';
+import '@fontsource/barlow-condensed/latin-600.css';
+import '@fontsource/barlow-condensed/latin-700.css';
+import '@fontsource/barlow-condensed/latin-800.css';
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Photo from '../components/Photo.astro';
+import Icon from '../components/Icon.astro';
+import ProductSelector from '../components/ProductSelector.astro';
+import Ritual from '../components/Ritual.astro';
+import Order from '../components/Order.astro';
+import { site } from '../data/site';
+const faqs = [
+  { q: '¿Qué es el kuhano vino?', a: 'Es una bebida de tradición croata: vino con cítricos y especias que se disfruta caliente, especialmente en los encuentros de invierno. Kuhano vino significa “vino cocido” o “vino caliente”.' },
+  { q: '¿La botella ya viene preparada?', a: 'Sí. Para disfrutar el kuhano caliente, solo tenés que calentarlo de 2 a 3 minutos a fuego suave, sin que hierva. Después, servilo con una rodaja de naranja.' },
+  { q: '¿Se puede tomar frío?', a: 'También podés disfrutar nuestro kuhano tinto con hielo. Probalo con naranja y menta, como en nuestros tragos.' },
+  { q: '¿Qué variedades puedo pedir?', a: 'La línea incluye Kuhano Tinto, Kuhano Blanco, Kuhano Blanco con Café y Bocana Vermut, también en su edición Fratellos. Escribinos para confirmar disponibilidad y presentaciones.' },
+  { q: '¿Cómo consulto precios y entregas?', a: 'Armá tu consulta al final de esta página y escribinos por Instagram. Ahí te contamos los precios, las presentaciones disponibles y coordinamos las opciones de entrega.' },
+];
+---
+<!doctype html>
+<html lang="es-AR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#b61818" />
+    <meta name="description" content="Zimska Vatra: vino kuhano de tradición croata. Descubrí nuestros vinos especiados y Bocana Vermut, encontrá tu ritual y consultá por tu próxima botella." />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_AR" />
+    <meta property="og:title" content="Zimska Vatra — El fuego se comparte" />
+    <meta property="og:description" content="Vino especiado, raíces croatas y una invitación a compartir. Conocé toda nuestra línea." />
+    <meta property="og:image" content="/images/hero-1200.webp" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>Zimska Vatra — El fuego se comparte</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
+    <div id="inicio"></div>
+    <Header />
+    <main id="contenido">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-image"><Photo name="hero" alt="Botella de Zimska Vatra junto a una taza de vino caliente con cítricos y canela, bajo la luz del sol" priority sizes="100vw" /></div>
+        <div class="hero-shade" aria-hidden="true"></div>
+        <div class="hero-content"><h1 id="hero-title">El fuego<br />se comparte.</h1><p>Vino especiado. Raíces croatas.<br />Y una buena excusa para encontrarnos.</p><a class="button button-cream" href="#pedido">Quiero probarlo <Icon name="diagonal" /></a><a class="hero-discover" href="#sabores">Descubrí nuestros sabores <Icon name="arrow" /></a></div>
+        <div class="hero-signature"><span>Un homenaje<br />a nuestras raíces.</span><span class="signature-word">Živjeli!</span><span>Salud, en croata.</span></div>
+        <div class="hero-caption"><span>Kuhano vino</span><span>Calor en cada encuentro.</span></div>
+      </section>
+      <div class="brand-ribbon" aria-hidden="true"><span>Tradición croata</span><i></i><span>Vino y especias</span><i></i><span>Hecho para compartir</span><i></i><span>Zimska Vatra</span></div>
+      <section class="introduction section-shell" aria-labelledby="intro-title"><h2 id="intro-title">Hay sabores que<br /><span>nos reúnen.</span></h2><div><p>En Croacia, el kuhano vino acompaña los encuentros: vino, cítricos y especias que se calientan despacio y se comparten sin apuro.</p><p>Traemos esa tradición a nuestra mesa. Porque lo que hay adentro de la botella es solo el comienzo.</p><a class="text-link" href="#raices">Conocé nuestra historia <Icon name="diagonal" /></a></div></section>
+      <ProductSelector />
+      <Ritual />
+      <section id="raices" class="roots" aria-labelledby="roots-title"><div class="section-shell roots-inner"><div class="roots-heading"><h2 id="roots-title">De nuestras raíces.<br /><span>A tu mesa.</span></h2><div><p>“Zimska Vatra” significa <strong>fuego de invierno.</strong> Una forma de nombrar ese calor que aparece cuando nos encontramos.</p><p>Nacimos para recuperar y compartir las tradiciones croatas a través de sus bebidas. En cada botella, una parte de esa cultura: sus sabores, sus historias y el valor de hacer algo con dedicación.</p><p class="roots-close">La tradición sigue cuando la compartimos.</p></div></div><div class="roots-gallery"><figure><Photo name="preparacion" alt="Preparación de vino kuhano en una olla con rodajas de cítricos y canela" sizes="(max-width: 700px) 90vw, 58vw" /><figcaption>Vino, cítricos y especias. Así empieza el encuentro.</figcaption></figure><figure><Photo name="produccion" alt="Botellas de Zimska Vatra preparadas una a una para compartir" sizes="(max-width: 700px) 90vw, 30vw" /><figcaption>Detrás de cada botella, trabajo y dedicación.</figcaption></figure></div></div></section>
+      <section class="faq section-shell" aria-labelledby="faq-title"><div><h2 id="faq-title">Antes del<br /><span>primer sorbo.</span></h2><p>Unas respuestas para ir entrando en calor.</p></div><div class="faq-list">{faqs.map(faq => <details><summary>{faq.q}<Icon name="plus" /></summary><p>{faq.a}</p></details>)}</div></section>
+      <Order />
+    </main>
+    <footer class="site-footer"><div class="footer-top section-shell"><a href="#inicio" aria-label="Zimska Vatra, volver al inicio"><img src="/images/logo-crema-320.webp" width="150" height="74" alt="Zimska Vatra" loading="lazy" /></a><p>Una tradición.<br />Muchas formas de compartirla.</p><a class="text-link" href={site.instagram} target="_blank" rel="noopener noreferrer">Seguinos en Instagram <Icon name="diagonal" /></a></div><div class="footer-bottom section-shell"><span>© {new Date().getFullYear()} Zimska Vatra</span><p>Beber con moderación. Prohibida su venta a menores de 18 años.</p><a href="#inicio">Volver arriba <Icon name="arrow" /></a></div></footer>
+  </body>
+</html>

@@ -1,0 +1,37 @@
+---
+import Icon from './Icon.astro';
+---
+<header class="site-header">
+  <a class="brand" href="#inicio" aria-label="Zimska Vatra, inicio"><img src="/images/logo-rojo-320.webp" alt="Zimska Vatra" width="124" height="61" /></a>
+  <button class="mobile-menu" type="button" aria-label="Abrir menú" aria-controls="main-navigation" aria-expanded="false"><Icon name="menu" /></button>
+  <nav id="main-navigation" class="main-navigation" aria-label="Navegación principal">
+    <a href="#sabores">Nuestros sabores</a>
+    <a href="#ritual">El ritual</a>
+    <a href="#raices">Nuestras raíces</a>
+  </nav>
+  <a class="button button-red header-order" href="#pedido">Hacé tu pedido <Icon name="diagonal" /></a>
+</header>
+<script>
+  const button = document.querySelector<HTMLButtonElement>('.mobile-menu');
+  const nav = document.querySelector<HTMLElement>('.main-navigation');
+  if (button && nav) {
+    document.querySelector<HTMLElement>('.site-header')!.dataset.enhanced = 'true';
+    const closeMenu = () => {
+      button.setAttribute('aria-expanded', 'false');
+      nav.classList.remove('is-open');
+      button.setAttribute('aria-label', 'Abrir menú');
+    };
+    button.addEventListener('click', () => {
+      const open = button.getAttribute('aria-expanded') !== 'true';
+      button.setAttribute('aria-expanded', String(open));
+      button.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+      nav.classList.toggle('is-open', open);
+    });
+    nav.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+    document.addEventListener('keydown', event => { if (event.key === 'Escape' && nav.classList.contains('is-open')) { closeMenu(); button.focus(); } });
+    document.addEventListener('click', event => {
+      if (event.target instanceof Node && !nav.contains(event.target) && !button.contains(event.target)) closeMenu();
+    });
+    window.matchMedia('(min-width: 761px)').addEventListener('change', closeMenu);
+  }
+</script>

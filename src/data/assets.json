@@ -1,0 +1,130 @@
+{
+  "hero": {
+    "source": "01_Fotos/02_Vino_caliente/Luz_de_sol/zimska-vatra-botella-taza-vino-caliente-luz-de-sol-082.jpg",
+    "width": 3024,
+    "height": 3024,
+    "widths": [
+      480,
+      800,
+      1200,
+      1800
+    ]
+  },
+  "tinto": {
+    "source": "01_Fotos/01_Producto/Interior/zimska-vatra-botella-vino-tinto-pared-texturada-167.jpg",
+    "width": 2296,
+    "height": 4080,
+    "widths": [
+      480,
+      800,
+      1200,
+      1800
+    ]
+  },
+  "blanco": {
+    "source": "02_Graficas/04_Retoques/zimska-vatra-botella-vino-blanco-en-mano-retocada-172.png",
+    "width": 1254,
+    "height": 1254,
+    "widths": [
+      480,
+      800,
+      1200,
+      1800
+    ]
+  },
+  "cafe": {
+    "source": "etiquetas/vino kuhano blanco con cafe frontal.png",
+    "width": 1148,
+    "height": 1370,
+    "widths": [
+      480,
+      800,
+      1200,
+      1800
+    ]
+  },
+  "bocana": {
+    "source": "01_Fotos/04_Vermut/En_mano/zimska-vatra-botella-vermut-etiqueta-negra-en-mano-196.jpeg",
+    "width": 3120,
+    "height": 4160,
+    "widths": [
+      480,
+      800,
+      1200,
+      1800
+    ]
+  },
+  "fratellos": {
+    "source": "01_Fotos/04_Vermut/Exterior/zimska-vatra-botella-vermut-rojo-sobre-arbusto-160.jpg",
+    "width": 2296,
+    "height": 4080,
+    "widths": [
+      480,
+      800,
+      1200,
+      1800
+    ]
+  },
+  "ritual-caliente": {
+    "source": "01_Fotos/02_Vino_caliente/Luz_de_sol/zimska-vatra-taza-vino-caliente-canela-luz-de-sol-073.jpg",
+    "width": 3872,
+    "height": 3872,
+    "widths": [
+      480,
+      800,
+      1200,
+      1800
+    ]
+  },
+  "ritual-frio": {
+    "source": "01_Fotos/03_Tragos_frios/Botella_y_vaso/zimska-vatra-botella-trago-frio-naranja-menta-120.jpg",
+    "width": 4284,
+    "height": 5712,
+    "widths": [
+      480,
+      800,
+      1200,
+      1800
+    ]
+  },
+  "preparacion": {
+    "source": "01_Fotos/02_Vino_caliente/Preparacion/zimska-vatra-olla-vino-caliente-citricos-canela-042.jpg",
+    "width": 3213,
+    "height": 5712,
+    "widths": [
+      480,
+      800,
+      1200,
+      1800
+    ]
+  },
+  "produccion": {
+    "source": "01_Fotos/05_Produccion/zimska-vatra-caja-botellas-produccion-162.jpg",
+    "width": 2296,
+    "height": 4080,
+    "widths": [
+      480,
+      800,
+      1200,
+      1800
+    ]
+  },
+  "logo-rojo": {
+    "source": "02_Graficas/06_Logotipos/zimska-vatra-logotipo-zimska-vatra-rojo-206.png",
+    "width": 2480,
+    "height": 1166,
+    "widths": [
+      320,
+      1200
+    ]
+  },
+  "logo-crema": {
+    "source": "02_Graficas/06_Logotipos/zimska-vatra-logotipo-zimska-vatra-crema-203.png",
+    "width": 1568,
+    "height": 884,
+    "widths": [
+      320,
+      1200
+    ]
+  }
+}
