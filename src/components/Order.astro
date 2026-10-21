@@ -50,7 +50,7 @@ const firstMessage = `¡Hola, Zimska Vatra! Quiero consultar por 1 botella de ${
       try {
         await navigator.clipboard.writeText(message.value);
         copy.querySelector('span')!.textContent = 'Consulta copiada';
-        status.textContent = 'Lista. Abrí Instagram y pegala en el chat.';
+        status.textContent = 'Lista. Abrí Instagram o WhatsApp y pegala en el chat.';
       } catch {
         message.focus(); message.select();
         status.textContent = 'Seleccionamos tu consulta. Copiala con el menú de tu dispositivo o con Ctrl+C.';

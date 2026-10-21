@@ -26,9 +26,9 @@ npm run preview
 - `src/pages/index.astro`: historia, preguntas frecuentes y metadatos.
 - `src/styles/global.css`: colores, tipografías, diseño y adaptación a móviles.
 
-Para habilitar WhatsApp, completá `site.whatsappNumber` en `src/data/site.ts` con el código de país y el número, solo dígitos. Se mostrará el botón con la consulta de la bebida y cantidad elegidas. Mientras esté vacío, los pedidos se consultan por Instagram.
+El contacto está habilitado por Instagram y por WhatsApp al +54 9 2974 61-2996. Para cambiar el número, editá `site.whatsappNumber` en `src/data/site.ts` con el código de país y el número, solo dígitos. El botón de WhatsApp incluye la consulta de la bebida y cantidad elegidas.
 
-No se publican precios ni zonas de entrega sin confirmar. El visitante puede armar y copiar una consulta; Instagram se abre para que pueda enviarla. La página no envía mensajes por su cuenta.
+No se publican precios ni zonas de entrega sin confirmar. El visitante puede armar una consulta y enviarla por Instagram o WhatsApp. La página no envía mensajes por su cuenta.
 
 ## Imágenes
 
