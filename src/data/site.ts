@@ -3,7 +3,7 @@ export const site = {
   instagram: 'https://www.instagram.com/zimska.vatra.ok/',
   instagramDM: 'https://ig.me/m/zimska.vatra.ok',
   // Add the country code and number, digits only, to enable WhatsApp everywhere.
-  whatsappNumber: '',
+  whatsappNumber: '5492974612996',
 };
 
 export const products = [
