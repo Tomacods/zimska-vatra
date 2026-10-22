@@ -103,14 +103,8 @@
   .tone-orange { --product-color: #a42d10; --product-tint: #eddfc9; }
   .product-photo { position: relative; min-width: 0; overflow: hidden; background: var(--cream); }
   .product-photo > img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
-  .product-panel:is([data-panel='tinto'], [data-panel='blanco'], [data-panel='bocana']) .product-photo > img { position: absolute; inset: 0; }
-  .product-panel[data-panel='tinto'] .product-photo img { object-position: left 86%; }
-  .product-panel[data-panel='blanco'] .product-photo img { object-position: left center; }
-  .product-panel[data-panel='bocana'] .product-photo img { object-position: 56% 100%; scale: 1.5; transform-origin: 70% 90%; }
-  .product-panel[data-panel='fratellos'] .product-photo img { object-position: 50% 50%; }
-  .product-photo.is-label { display: grid; place-content: center; background: #c47b00; padding: 45px 55px; }
-  .product-photo.is-label img { width: 100%; max-height: 510px; object-fit: contain; }
-  .product-photo figcaption { margin-top: 18px; font-size: 12px; text-align: center; color: #fff5dc; }
+  .product-photo.is-bottle { background: #fff; }
+  .product-photo.is-bottle > img { position: absolute; inset: 0; object-fit: contain; }
   .product-details { display: flex; flex-direction: column; align-items: flex-start; justify-content: center; padding: 50px clamp(28px, 5vw, 74px); }
   .product-category { font-size: 14px; color: var(--product-color); margin-top: 15px; font-weight: 500; }
   .product-details h3 { font-size: clamp(2.8rem, 4.4vw, 4.4rem); color: var(--product-color); }
@@ -242,7 +236,6 @@
     .product-options > a { padding-inline: 13px; font-size: 15px; }
     .product-options > a svg { display: none; }
     .product-panel { min-height: 620px; grid-template-columns: 43% 57%; }
-    .product-panel[data-panel='blanco'] .product-photo img { object-position: 25% center; }
     .product-details { padding: 35px; }
     .product-description { font-size: 16px; }
     .ritual-scene { gap: 50px; }
@@ -291,10 +284,6 @@
     .product-dot { width: 8px; height: 8px; }
     .product-panel { display: flex; flex-direction: column; margin-top: 16px; min-height: auto; }
     .product-photo { height: 420px; }
-    .product-panel[data-panel='blanco'] .product-photo img { object-position: left center; }
-    .product-photo.is-label { height: 460px; padding: 25px 65px; }
-    .product-photo.is-label img { height: 360px; }
-    .product-photo figcaption { margin-top: 10px; font-size: 10px; }
     .product-details { padding: 32px 26px 35px; }
     .product-details h3 { font-size: 3.3rem; }
     .product-category { margin-top: 13px; font-size: 13px; }

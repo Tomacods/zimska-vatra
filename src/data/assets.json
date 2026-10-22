@@ -11,47 +11,43 @@
     ]
   },
   "tinto": {
-    "source": "01_Fotos/01_Producto/Interior/zimska-vatra-botella-vino-tinto-pared-texturada-167.jpg",
-    "width": 2296,
-    "height": 4080,
+    "source": "DDE3758C-5FCA-4308-9A51-E34B6738FCF5.png",
+    "width": 1086,
+    "height": 1448,
     "widths": [
       480,
       800,
-      1200,
-      1800
+      1086
     ]
   },
   "blanco": {
-    "source": "02_Graficas/04_Retoques/zimska-vatra-botella-vino-blanco-en-mano-retocada-172.png",
-    "width": 1254,
-    "height": 1254,
+    "source": "8C1D376C-A9AB-4B22-8BCA-7CB4B970D52E.png",
+    "width": 1086,
+    "height": 1448,
     "widths": [
       480,
       800,
-      1200,
-      1800
+      1086
     ]
   },
   "cafe": {
-    "source": "etiquetas/vino kuhano blanco con cafe frontal.png",
-    "width": 1148,
-    "height": 1370,
+    "source": "813136E0-D5BB-454D-918F-451873B78276.png",
+    "width": 1086,
+    "height": 1448,
     "widths": [
       480,
       800,
-      1200,
-      1800
+      1086
     ]
   },
   "bocana": {
-    "source": "01_Fotos/04_Vermut/En_mano/zimska-vatra-botella-vermut-etiqueta-negra-en-mano-196.jpeg",
-    "width": 3120,
-    "height": 4160,
+    "source": "B3C2D5D7-6841-4BD2-B163-A70C08CCDAD4.png",
+    "width": 1086,
+    "height": 1448,
     "widths": [
       480,
       800,
-      1200,
-      1800
+      1086
     ]
   },
   "fratellos": {

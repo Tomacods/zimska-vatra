@@ -13,7 +13,7 @@ export const products = [
     description: 'Vino tinto, cítricos y especias. Nuestro encuentro con la tradición croata empieza acá: con el aroma de una taza caliente y tiempo para compartir.',
     notes: ['Vino tinto', 'Cítricos', 'Especias'],
     serving: 'Calentá de 2 a 3 minutos, sin hervir, y acompañá con una rodaja de naranja.',
-    image: 'tinto', imageAlt: 'Botella original de Zimska Vatra Kuhano Tinto sobre una mesa de madera',
+    image: 'tinto', imageAlt: 'Botella de Kuhano Tinto de Zimska Vatra con etiqueta roja sobre fondo blanco',
     color: '#b61818', tone: 'red', sizes: 'Consultá por las presentaciones de 200 y 500 ml.',
   },
   {
@@ -22,7 +22,7 @@ export const products = [
     description: 'Suave, de dulzor moderado, con frescura cítrica y un delicado toque de jengibre. La misma esencia del kuhano, con una personalidad propia.',
     notes: ['Vino blanco', 'Cítricos', 'Jengibre'],
     serving: 'Disfrutalo caliente, sin llevarlo a hervor, con una rodaja de naranja.',
-    image: 'blanco', imageAlt: 'Botella de Kuhano Blanco de Zimska Vatra, con su etiqueta azul, sostenida en una mano',
+    image: 'blanco', imageAlt: 'Botella de Kuhano Blanco de Zimska Vatra con etiqueta azul sobre fondo blanco',
     color: '#2e4170', tone: 'blue', sizes: 'Consultá por las presentaciones disponibles.',
   },
   {
@@ -31,7 +31,7 @@ export const products = [
     description: 'Nuestra línea de kuhano también tiene una versión que reúne vino blanco, especias y café. Una combinación para quienes disfrutan descubrir algo distinto.',
     notes: ['Vino blanco', 'Especias', 'Café'],
     serving: 'Escribinos y descubrí cómo disfrutar esta variedad.',
-    image: 'cafe', imageAlt: 'Etiqueta original naranja de Zimska Vatra Vino Kuhano Blanco con Café',
+    image: 'cafe', imageAlt: 'Botella de Kuhano Blanco con Café de Zimska Vatra con etiqueta naranja sobre fondo blanco',
     color: '#855300', tone: 'ochre', sizes: 'Presentación de 200 ml. Consultá disponibilidad.',
   },
   {
@@ -40,7 +40,7 @@ export const products = [
     description: 'Bocana es nuestro vermut de receta clásica. Otra expresión de Zimska Vatra para acompañar el aperitivo, la charla y esos momentos que se estiran.',
     notes: ['Vermut', 'Receta clásica', 'Aperitivo'],
     serving: 'Hacelo parte de tu aperitivo y consultanos por las formas de servirlo.',
-    image: 'bocana', imageAlt: 'Botella de Bocana Vermut de receta clásica, con etiqueta verde, sostenida en una mano',
+    image: 'bocana', imageAlt: 'Botella de Bocana Vermut de receta clásica con etiqueta verde sobre fondo blanco',
     color: '#334231', tone: 'green', sizes: 'Presentación de 200 ml. Consultá disponibilidad.',
   },
   {
