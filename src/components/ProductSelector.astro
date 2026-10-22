@@ -15,9 +15,8 @@ import Icon from './Icon.astro';
     <div class="product-panels">
       {products.map((product) => (
         <article class={`product-panel tone-${product.tone}`} id={`variedad-${product.id}`} data-panel={product.id}>
-          <figure class:list={['product-photo', { 'is-label': product.id === 'cafe' }]}>
+          <figure class:list={['product-photo', { 'is-bottle': product.id !== 'fratellos' }]}>
             <Photo name={product.image} alt={product.imageAlt} sizes="(max-width: 700px) 100vw, 44vw" />
-            {product.id === 'cafe' && <figcaption>La etiqueta original de nuestra variedad con café.</figcaption>}
           </figure>
           <div class="product-details">
             <h3>{product.title.split('\n').map((line) => <span>{line}</span>)}</h3>

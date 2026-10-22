@@ -40,6 +40,12 @@ Para volver a prepararlas desde los originales:
 node scripts/prepare-assets.mjs "F:/downloads/zimska-vatra"
 ```
 
+Para actualizar solo las fotos de Tinto, Blanco, Blanco con Café y Bocana desde la carpeta con los PNG originales:
+
+```sh
+node scripts/prepare-assets.mjs "ruta/a/las/fotos" tinto blanco cafe bocana
+```
+
 El proceso conserva la orientación correcta, genera distintos tamaños WebP e incluye la procedencia de cada imagen en sus metadatos. `src/data/assets.json` registra sus dimensiones y archivos de origen.
 
 Las fotos y etiquetas pertenecen a Zimska Vatra. Las fuentes Barlow y Barlow Condensed se distribuyen con sus licencias en los paquetes de Fontsource. Se usan fuentes locales: no hay llamadas a Google Fonts.
